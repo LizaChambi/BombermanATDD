@@ -15,7 +15,7 @@ Ejercitar la escritura de código en ambientes colaborativos utilizando una meto
 Nro |     Nombre     | Legajo |         Mail
 ----|----------------|--------|------------------------
 1   | Chambi Liza    |  26057 | liza.chambi@gmail.com
-2   | Jimena Rosato  |        |
+2   | Jimena Rosato  |  31649 | jimenarosato@gmail.com
 3   | Joaquin Decima |        |
 4   |                |        |
     
