@@ -2,7 +2,7 @@ public class Celda {
 
     protected int x;
     protected int y;
-    protected EstadoCelda estado;
+    private EstadoCelda estado;
 
     public Celda(int x , int y){
         this.x = x;
