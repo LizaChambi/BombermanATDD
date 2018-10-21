@@ -1,10 +1,2 @@
 language: java
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-env:
-  global:
-    - CODECOV_TOKEN="c2634c6c-c828-401a-aa2b-d035013062f8"
-  
-script: ./gradlew cucumber
