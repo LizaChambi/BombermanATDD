@@ -1,10 +1,12 @@
 public class Bomba
 {
-        private Integer tiempoDeDetonacion;
+    private Integer tiempoDeDetonacion;
+    private Posicion posicion;
 
-        public Bomba(Integer tiempo)
+    public Bomba(Integer tiempo, Posicion pos)
         {
             this.tiempoDeDetonacion = tiempo;
+            this.posicion = pos;
         }
 
     public void tick()
@@ -12,8 +14,11 @@ public class Bomba
         this.tiempoDeDetonacion = tiempoDeDetonacion-1;
     }
 
-    public Boolean exploto()
+    public void exploto(Mapa map)
     {
-        return tiempoDeDetonacion==0;
+        if( tiempoDeDetonacion == 0)
+        {
+            map.limpiarCeldas(posicion);
+        }
     }
 }

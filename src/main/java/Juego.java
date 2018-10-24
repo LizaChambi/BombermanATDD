@@ -1,7 +1,10 @@
+import java.util.List;
+
 public class Juego {
 
     private Mapa mapa;
     private Bomberman bman;
+    private List<Bomba> bombas;
 
     public Juego (Mapa m, Bomberman b){
         mapa = m;
@@ -50,6 +53,12 @@ public class Juego {
 
     public void tick()
     {
-        this.mapa.tick();
+        this.bombas.forEach(bomba -> bomba.tick());
+        this.bombas.forEach(bomba -> bomba.exploto(this.mapa));
+    }
+
+    public void agregarBomba(Integer ticks)
+    {
+        this.bombas.add(this.bman.ponerBomba(ticks));
     }
 }

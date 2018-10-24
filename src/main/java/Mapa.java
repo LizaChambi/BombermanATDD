@@ -21,12 +21,15 @@ public class Mapa {
         celdas[x][y].setEstado(e);
     }
 
-    public void tick()
+    public void limpiarCeldas(Posicion posicion)
     {
-        for (int x= 0; x<celdas.length; x++) {
-            for(int y=0 ; y<celdas.length; y++) {
-                getCelda(x, y).tick(this);
-            }
-        }
+        Integer x = posicion.getX();
+        Integer y = posicion.getY();
+        getCelda(x+1, y).explotar();
+        getCelda(x+2, y).explotar();
+        getCelda(x+3, y).explotar();
+        getCelda(x, y+1).explotar();
+        getCelda(x, y+2).explotar();
+        getCelda(x, y+3).explotar();
     }
 }

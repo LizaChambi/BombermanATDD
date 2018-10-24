@@ -20,9 +20,8 @@ public class Bomberman {
         return this.estado;
     }
 
-    public void ponerBomba(Integer duracionDeLaBomba, Mapa map)
+    public Bomba ponerBomba(Integer duracionDeLaBomba)
     {
-        map.getCelda(this.posicionActual.x, this.posicionActual.y).setEstado(EstadoCelda.BOMBA);
-        map.getCelda(this.posicionActual.x, this.posicionActual.y).ponerBomba(new Bomba (duracionDeLaBomba));
+        return new Bomba(duracionDeLaBomba, this.posicionActual);
     }
 }
