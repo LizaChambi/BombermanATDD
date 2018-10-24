@@ -31,6 +31,9 @@ public class Celda {
 
     public void explotar()
     {
-        this.estado = EstadoCelda.VACIA;
+        if (this.estado != EstadoCelda.PARED_ACERO)
+        {
+            this.estado = EstadoCelda.VACIA;
+        }
     }
 }
