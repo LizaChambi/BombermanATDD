@@ -20,4 +20,13 @@ public class Mapa {
     public void setCelda(int x, int y, EstadoCelda e){
         celdas[x][y].setEstado(e);
     }
+
+    public void tick()
+    {
+        for (int x= 0; x<celdas.length; x++) {
+            for(int y=0 ; y<celdas.length; y++) {
+                getCelda(x, y).tick(this);
+            }
+        }
+    }
 }

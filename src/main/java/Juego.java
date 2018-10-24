@@ -42,4 +42,14 @@ public class Juego {
 
         //si la celda es una pared, no hace nada
     }
+
+    public Bomberman getBomberman()
+    {
+        return this.bman;
+    }
+
+    public void tick()
+    {
+        this.mapa.tick();
+    }
 }
