@@ -62,7 +62,7 @@ public class BombermanTest {
         assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.VACIA);
         assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.VACIA);
         assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.VACIA);
-        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.PARED_MELAMINA);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.PARED_MELAMINA);
     }
 
 }

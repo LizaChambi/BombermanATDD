@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
@@ -11,6 +12,7 @@ public class Juego {
         bman = b;
         mapa.setCelda(0, 0, EstadoCelda.BOMBERMAN);
         bman.setPosicionActual(new Posicion(0, 0));
+        bombas = new ArrayList<Bomba>();
     }
 
 
