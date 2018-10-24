@@ -65,4 +65,25 @@ public class BombermanTest {
         assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.PARED_MELAMINA);
     }
 
+    @Test
+    public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe2SegundosMataAlEnemigoQueEntraEnContactoConLaOndaExpansiva()
+    {
+        assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
+        juego.getMapa().setCelda(1,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(2,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(3,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(4,0,EstadoCelda.ENEMIGO);
+        juego.agregarBomba(2);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.ENEMIGO);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.ENEMIGO);
+    }
+
 }
