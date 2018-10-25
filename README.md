@@ -18,7 +18,7 @@ Nro |     Nombre     | Legajo |         Mail
 ----|----------------|--------|------------------------
 1   | Chambi Liza    |  26057 | liza.chambi@gmail.com
 2   | Jimena Rosato  |  31649 | jimenarosato@gmail.com
-3   | Joaquin Decima |        |
+3   | Joaquin Decima |        | joaquin.decima@gmail.com
 4   |                |        |
     
 ### Entrega
