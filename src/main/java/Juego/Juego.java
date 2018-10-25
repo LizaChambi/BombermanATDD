@@ -2,6 +2,7 @@ package Juego;
 
 import Boomberman.*;
 import Juego.Tablero.*;
+import Objetos.Vacio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class Juego {
     public Juego (Mapa m, Bomberman b){
         mapa = m;
         bman = b;
-        mapa.setCelda(0, 0, EstadoCelda.BOMBERMAN);
+        mapa.setCelda(0, 0, new Bomberman());
         bman.setPosicionActual(new Posicion(0, 0));
         bombas = new ArrayList<Bomba>();
     }
@@ -44,8 +45,8 @@ public class Juego {
     public void efectoAlMoverse(Posicion actual, Posicion nueva) {
         if (mapa.getCelda(nueva.x, nueva.y).getEstado() == EstadoCelda.VACIA) {
             bman.setPosicionActual(nueva);
-            mapa.setCelda(nueva.x, nueva.y, EstadoCelda.BOMBERMAN);
-            mapa.setCelda(actual.x, actual.y, EstadoCelda.VACIA);
+            mapa.setCelda(nueva.x, nueva.y, new Bomberman());
+            mapa.setCelda(actual.x, actual.y, new Vacio());
         }
         if (mapa.getCelda(nueva.x, nueva.y).getEstado() == EstadoCelda.ENEMIGO) {
             bman.setEstado(EstadoBomberman.DEAD);

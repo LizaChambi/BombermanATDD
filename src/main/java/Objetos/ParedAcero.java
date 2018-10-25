@@ -6,9 +6,7 @@ import Juego.Tablero.EstadoCelda;
 
 public class ParedAcero implements Objeto {
     @Override
-    public void explotar(Celda celda) {
-        celda.setObjeto(new Vacio());
-    }
+    public void explotar(Celda celda) {}
 
     @Override
     public void moverA(Bomberman bomberman) {

@@ -1,8 +1,9 @@
 package Objetos;
 
 import Boomberman.Bomberman;
-import Objetos.Objeto;
-import Objetos.Vacio;
+import Juego.Tablero.Celda;
+import Juego.Tablero.EstadoCelda;
+
 
 public class ParedMelamina implements Objeto {
     @Override

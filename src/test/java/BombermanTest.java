@@ -3,7 +3,13 @@ import Boomberman.EstadoBomberman;
 import Juego.Juego;
 import Juego.Tablero.EstadoCelda;
 import Juego.Tablero.Mapa;
+import Objetos.Enemigo;
+import Objetos.ParedAcero;
+import Objetos.ParedMelamina;
+import Objetos.Vacio;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BombermanTest {
 
@@ -28,7 +34,7 @@ public class BombermanTest {
     @Test
     public void bombermanSeMueveALaCeldaEsteLaCualEstaOcupadaYSeQuedaDondeEsta(){
         assertEquals(juego.getMapa().getCelda(0, 0).getEstado(),EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_MELAMINA);
+        juego.getMapa().setCelda(1,0,new ParedMelamina());
         assertEquals(juego.getMapa().getCelda(1,0).getEstado(), EstadoCelda.PARED_MELAMINA);
 
         juego.moverBombermanEste();
@@ -40,7 +46,7 @@ public class BombermanTest {
     @Test
     public void bombermanSeMueveALaCeldaNoresteLaCualEstaOcupadaPorUnEnemigoYMuere(){
         assertEquals(juego.getMapa().getCelda(0, 0).getEstado(),EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,1,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(1,1,new Enemigo());
         assertEquals(juego.getMapa().getCelda(1,1).getEstado(), EstadoCelda.ENEMIGO);
 
         juego.moverBombermanNorte();
@@ -54,10 +60,10 @@ public class BombermanTest {
     public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe1SegundosRompeTodasLasParedesDeMelaminaAUnRaddioDe3Casilleros()
     {
         assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_MELAMINA);
-        juego.getMapa().setCelda(2,0,EstadoCelda.PARED_MELAMINA);
-        juego.getMapa().setCelda(3,0,EstadoCelda.PARED_MELAMINA);
-        juego.getMapa().setCelda(4,0,EstadoCelda.PARED_MELAMINA);
+        juego.getMapa().setCelda(1,0,new ParedMelamina());
+        juego.getMapa().setCelda(2,0,new ParedMelamina());
+        juego.getMapa().setCelda(3,0,new ParedMelamina());
+        juego.getMapa().setCelda(4,0,new ParedMelamina());
         juego.agregarBomba(1);
         juego.tick();
         assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.VACIA);
@@ -70,10 +76,10 @@ public class BombermanTest {
     public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe2SegundosMataAlEnemigoQueEntraEnContactoConLaOndaExpansiva()
     {
         assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,0,EstadoCelda.ENEMIGO);
-        juego.getMapa().setCelda(2,0,EstadoCelda.ENEMIGO);
-        juego.getMapa().setCelda(3,0,EstadoCelda.ENEMIGO);
-        juego.getMapa().setCelda(4,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(1,0,new Enemigo());
+        juego.getMapa().setCelda(2,0,new Enemigo());
+        juego.getMapa().setCelda(3,0,new Enemigo());
+        juego.getMapa().setCelda(4,0,new Enemigo());
         juego.agregarBomba(2);
         juego.tick();
         assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.ENEMIGO);
@@ -91,10 +97,10 @@ public class BombermanTest {
     public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe2SegundosDetonaYNoRompeLasParedesDeMetal()
     {
         assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_ACERO);
-        juego.getMapa().setCelda(2,0,EstadoCelda.PARED_ACERO);
-        juego.getMapa().setCelda(3,0,EstadoCelda.PARED_ACERO);
-        juego.getMapa().setCelda(4,0,EstadoCelda.PARED_ACERO);
+        juego.getMapa().setCelda(1,0,new ParedAcero());
+        juego.getMapa().setCelda(2,0,new ParedAcero());
+        juego.getMapa().setCelda(3,0,new ParedAcero());
+        juego.getMapa().setCelda(4,0,new ParedAcero());
         juego.agregarBomba(1);
         juego.tick();
         assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.PARED_ACERO);

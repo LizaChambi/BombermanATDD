@@ -1,8 +1,11 @@
 package Boomberman;
 
+import Juego.Tablero.Celda;
+import Juego.Tablero.EstadoCelda;
 import Juego.Tablero.Posicion;
+import Objetos.Objeto;
 
-public class Bomberman {
+public class Bomberman implements Objeto {
 
     private Posicion posicionActual; // Debería ser del tipo Juego.Tablero.Celda.
     private EstadoBomberman estado;
@@ -31,5 +34,32 @@ public class Bomberman {
 
     public void morir() {
         estado = EstadoBomberman.DEAD;
+    }
+
+    @Override
+    public void explotar(Celda celda) {
+
+    }
+
+    @Override
+    public void moverA(Bomberman bomberman) {
+
+    }
+
+    @Override
+    public EstadoCelda estado() {
+        return EstadoCelda.BOMBERMAN;
+    }
+
+    public void moverParedAcero() {
+        // No se puede mover
+    }
+
+    public void moverParedMelamina() {
+        // No se puede mover
+    }
+
+    public void mover(){
+        // TODO modificar
     }
 }
