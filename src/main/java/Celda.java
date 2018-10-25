@@ -2,21 +2,17 @@ public class Celda {
 
     protected int x;
     protected int y;
-    private EstadoCelda estado;
     private Bomba bomba;
+    private Objeto objeto;
 
     public Celda(int x , int y){
         this.x = x;
         this.y = y;
-        estado = EstadoCelda.VACIA;
+        objeto = new Vacio();
     }
 
     public EstadoCelda getEstado(){
-        return estado;
-    }
-
-    public void setEstado(EstadoCelda e){
-        this.estado = e;
+        return objeto.estado();
     }
 
     public void ponerBomba(Bomba bomba)
@@ -31,9 +27,10 @@ public class Celda {
 
     public void explotar()
     {
-        if (this.estado != EstadoCelda.PARED_ACERO)
-        {
-            this.estado = EstadoCelda.VACIA;
-        }
+        this.objeto.explotar(this);
+    }
+
+    public void setObjeto(Objeto objeto) {
+        this.objeto = objeto;
     }
 }

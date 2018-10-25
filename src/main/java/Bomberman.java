@@ -24,4 +24,8 @@ public class Bomberman {
     {
         return new Bomba(duracionDeLaBomba, this.posicionActual);
     }
+
+    public void morir() {
+        estado = EstadoBomberman.DEAD;
+    }
 }
