@@ -20,4 +20,16 @@ public class Mapa {
     public void setCelda(int x, int y, EstadoCelda e){
         celdas[x][y].setEstado(e);
     }
+
+    public void limpiarCeldas(Posicion posicion)
+    {
+        Integer x = posicion.getX();
+        Integer y = posicion.getY();
+        getCelda(x+1, y).explotar();
+        getCelda(x+2, y).explotar();
+        getCelda(x+3, y).explotar();
+        getCelda(x, y+1).explotar();
+        getCelda(x, y+2).explotar();
+        getCelda(x, y+3).explotar();
+    }
 }

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class BombermanTest {
 
     Bomberman bman = new Bomberman();
-    Mapa mapa = new Mapa(2); //cuadrado de 2 x 2 , celdas vacias, salvo la (0,0), ocupada por bman
+    Mapa mapa = new Mapa(5); //cuadrado de 5 x 5 , celdas vacias, salvo la (0,0), ocupada por bman
     Juego juego = new Juego(mapa, bman);
 
     //Bomberman siempre empieza en la posicion x=0, y=0
@@ -27,8 +27,8 @@ public class BombermanTest {
     @Test
     public void bombermanSeMueveALaCeldaEsteLaCualEstaOcupadaYSeQuedaDondeEsta(){
         assertEquals(juego.getMapa().getCelda(0, 0).getEstado(),EstadoCelda.BOMBERMAN);
-        juego.getMapa().setCelda(1,0,EstadoCelda.PARED);
-        assertEquals(juego.getMapa().getCelda(1,0).getEstado(), EstadoCelda.PARED);
+        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_MELAMINA);
+        assertEquals(juego.getMapa().getCelda(1,0).getEstado(), EstadoCelda.PARED_MELAMINA);
 
         juego.moverBombermanEste();
 
@@ -48,5 +48,60 @@ public class BombermanTest {
         assertEquals(juego.getMapa().getCelda(0,0).getEstado(), EstadoCelda.VACIA);
         assertEquals(bman.getEstado(), EstadoBomberman.DEAD);
     }
+
+    @Test
+    public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe1SegundosRompeTodasLasParedesDeMelaminaAUnRaddioDe3Casilleros()
+    {
+        assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
+        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_MELAMINA);
+        juego.getMapa().setCelda(2,0,EstadoCelda.PARED_MELAMINA);
+        juego.getMapa().setCelda(3,0,EstadoCelda.PARED_MELAMINA);
+        juego.getMapa().setCelda(4,0,EstadoCelda.PARED_MELAMINA);
+        juego.agregarBomba(1);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.PARED_MELAMINA);
+    }
+
+    @Test
+    public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe2SegundosMataAlEnemigoQueEntraEnContactoConLaOndaExpansiva()
+    {
+        assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
+        juego.getMapa().setCelda(1,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(2,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(3,0,EstadoCelda.ENEMIGO);
+        juego.getMapa().setCelda(4,0,EstadoCelda.ENEMIGO);
+        juego.agregarBomba(2);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.ENEMIGO);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.ENEMIGO);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.VACIA);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.ENEMIGO);
+    }
+
+    @Test
+    public void bombermanSueltaUnaBombaDondeSeEncuentraYLuegoDe2SegundosDetonaYNoRompeLasParedesDeMetal()
+    {
+        assertEquals (juego.getMapa().getCelda(0, 0).getEstado(), EstadoCelda.BOMBERMAN);
+        juego.getMapa().setCelda(1,0,EstadoCelda.PARED_ACERO);
+        juego.getMapa().setCelda(2,0,EstadoCelda.PARED_ACERO);
+        juego.getMapa().setCelda(3,0,EstadoCelda.PARED_ACERO);
+        juego.getMapa().setCelda(4,0,EstadoCelda.PARED_ACERO);
+        juego.agregarBomba(1);
+        juego.tick();
+        assertEquals(juego.getMapa().getCelda(1, 0).getEstado(), EstadoCelda.PARED_ACERO);
+        assertEquals(juego.getMapa().getCelda(2, 0).getEstado(), EstadoCelda.PARED_ACERO);
+        assertEquals(juego.getMapa().getCelda(3, 0).getEstado(), EstadoCelda.PARED_ACERO);
+        assertEquals(juego.getMapa().getCelda(4, 0).getEstado(), EstadoCelda.PARED_ACERO);
+    }
+
+
 
 }

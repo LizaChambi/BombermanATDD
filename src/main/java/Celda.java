@@ -3,6 +3,7 @@ public class Celda {
     protected int x;
     protected int y;
     private EstadoCelda estado;
+    private Bomba bomba;
 
     public Celda(int x , int y){
         this.x = x;
@@ -18,5 +19,21 @@ public class Celda {
         this.estado = e;
     }
 
+    public void ponerBomba(Bomba bomba)
+    {
+        setBomba(bomba);
+    }
 
+    public void setBomba(Bomba bombaActivada)
+    {
+        this.bomba = bombaActivada;
+    }
+
+    public void explotar()
+    {
+        if (this.estado != EstadoCelda.PARED_ACERO)
+        {
+            this.estado = EstadoCelda.VACIA;
+        }
+    }
 }

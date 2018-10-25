@@ -1,13 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Juego {
 
     private Mapa mapa;
     private Bomberman bman;
+    private List<Bomba> bombas;
 
     public Juego (Mapa m, Bomberman b){
         mapa = m;
         bman = b;
         mapa.setCelda(0, 0, EstadoCelda.BOMBERMAN);
         bman.setPosicionActual(new Posicion(0, 0));
+        bombas = new ArrayList<Bomba>();
     }
 
 
@@ -41,5 +46,21 @@ public class Juego {
         }
 
         //si la celda es una pared, no hace nada
+    }
+
+    public Bomberman getBomberman()
+    {
+        return this.bman;
+    }
+
+    public void tick()
+    {
+        this.bombas.forEach(bomba -> bomba.tick());
+        this.bombas.forEach(bomba -> bomba.exploto(this.mapa));
+    }
+
+    public void agregarBomba(Integer ticks)
+    {
+        this.bombas.add(this.bman.ponerBomba(ticks));
     }
 }

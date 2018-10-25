@@ -1,8 +1,9 @@
 public class Bomberman {
 
-    private Posicion posicionActual;
+    private Posicion posicionActual; // Debería ser del tipo Celda.
     private EstadoBomberman estado;
 
+    // Esto debería retornar una Celda.
     public Posicion getPosicionActual() {
         return posicionActual;
     }
@@ -17,5 +18,10 @@ public class Bomberman {
 
     public EstadoBomberman getEstado(){
         return this.estado;
+    }
+
+    public Bomba ponerBomba(Integer duracionDeLaBomba)
+    {
+        return new Bomba(duracionDeLaBomba, this.posicionActual);
     }
 }
