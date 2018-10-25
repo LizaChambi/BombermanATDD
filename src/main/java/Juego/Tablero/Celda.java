@@ -1,3 +1,9 @@
+package Juego.Tablero;
+
+import Boomberman.Bomba;
+import Objetos.Objeto;
+import Objetos.Vacio;
+
 public class Celda {
 
     protected int x;

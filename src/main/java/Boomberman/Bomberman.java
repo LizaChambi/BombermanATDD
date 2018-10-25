@@ -1,9 +1,13 @@
+package Boomberman;
+
+import Juego.Tablero.Posicion;
+
 public class Bomberman {
 
-    private Posicion posicionActual; // Debería ser del tipo Celda.
+    private Posicion posicionActual; // Debería ser del tipo Juego.Tablero.Celda.
     private EstadoBomberman estado;
 
-    // Esto debería retornar una Celda.
+    // Esto debería retornar una Juego.Tablero.Celda.
     public Posicion getPosicionActual() {
         return posicionActual;
     }

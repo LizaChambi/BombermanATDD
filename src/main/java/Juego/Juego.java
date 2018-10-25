@@ -1,5 +1,11 @@
+package Juego;
+
+import Boomberman.*;
+import Juego.Tablero.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Juego {
 

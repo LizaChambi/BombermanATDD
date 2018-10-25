@@ -1,3 +1,9 @@
+package Objetos;
+
+import Boomberman.Bomberman;
+import Objetos.Objeto;
+import Objetos.Vacio;
+
 public class ParedMelamina implements Objeto {
     @Override
     public void explotar(Celda celda) {

@@ -1,3 +1,7 @@
+package Juego.Tablero;
+
+import Objetos.Objeto;
+
 import java.util.Hashtable;
 
 public class Mapa {
@@ -17,8 +21,8 @@ public class Mapa {
         return celdas[x][y];
     }
 
-    public void setCelda(int x, int y, EstadoCelda e){
-        celdas[x][y].setEstado(e);
+    public void setCelda(int x, int y, Objeto e){
+        celdas[x][y].setObjeto(e);
     }
 
     public void limpiarCeldas(Posicion posicion)
