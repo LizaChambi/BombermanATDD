@@ -1,3 +1,8 @@
+package Boomberman;
+
+import Juego.Tablero.Mapa;
+import Juego.Tablero.Posicion;
+
 public class Bomba
 {
     private Integer tiempoDeDetonacion;
